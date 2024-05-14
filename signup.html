@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign UP</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url(images/bgform.jpg)
+
+        }
+
+        .form {
+            width: 400px;
+            margin: 9vh auto 0 auto;
+            background-color: #98dede;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="index.html" id="form">
+            <h1>REGISTER HERE..</h1>
+            <div class="box">
+            <div class="input-cred">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" name="username">
+                <div class="error"></div>
+            </div>
+            <div class="input-cred">
+                <label for="email">E-mail ID </label>
+                <input type="text" id="email" placeholder="user@gmail.com" name="email">
+                <div class="error"></div>
+            </div>
+            <div class="input-cred">
+                <label for="phone">Mobile no</label>
+                <input type="text" id="phone" placeholder="000-000-0000" name="phone">
+                <div class="error"></div>
+            </div>
+            <div class="input-cred">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="********" name="password"
+                    oninput="checkPasswordStrength()">
+                <div id="password-strength-meter">
+                    <progress max="100" value="0" id="strength-progress"></progress>
+                    <span id="warning"></span>
+                </div>
+                <div class="error"></div>
+            </div>
+            <div class="input-cred">
+                <label for="confpassword">Confirm Password</label>
+                <input type="password" id="confpassword" placeholder="********" name="cpassword">
+                <div class="error"></div>
+            </div>
+            <button type="submit">SIGN IN</button>
+            <a href="index.html" style="margin-left:150px;">LOG IN</a>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

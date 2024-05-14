@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 Aloysius Alexander </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="homepage.html" id="form">
+            <h1>LOG IN</h1>
+            <div class="box">
+            <div class="input-cred">
+                <label for="email">E-mail ID</label>
+                <input type="text" id="email" placeholder="user@gmail.com" name="email">
+                <div class="error"></div>
+            </div>
+            <div class="input-cred">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="**********" name="password">
+                <div class="error"></div>
+            </div>
+            <button type="submit">SIGN IN</button>
+            <br>
+            <p>
+                <a href="passReset.html" style="color: green;
+        text-decoration: none;
+        ">Forgot password ?</a>
+                <a href="signup.html" style="color: green;
+        text-decoration: none;
+        "> SIGN UP</a>
+            </p>
+            </div>
+        </form>
+    </div>
+    <script>
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+
+        form.addEventListener('submit', (e) => {
+            if (!validateInputs()) {
+                e.preventDefault();
+            }
+        })
+
+        function validateInputs() {
+            const emailValue = email.value.trim();
+            const passValue = password.value.trim();
+            let success = true;
+
+            if (emailValue === '') {
+                success = false;
+                setError(email, 'email is required')
+            }
+            else if (!validateEmail(emailValue)) {
+                success = false;
+                setError(email, 'Email not in globalformat')
+            }
+            else {
+                setSuccess(email);
+            }
+
+            if (passValue === '') {
+                success = false;
+                setError(password, 'Password is required')
+            }
+            else if (passValue.length < 8) {
+                success = false;
+                setError(password, 'password is very short')
+            }
+            else if (passValue.length > 26) {
+                success = false;
+                setError(password, 'password is too long')
+            }
+            else {
+                setSuccess(password);
+            }
+
+            return success;
+        }
+
+        function setError(element, message) {
+            const inputCred = element.parentElement;
+            const errorElement = inputCred.querySelector('.error')
+
+            errorElement.innerText = message;
+            inputCred.classList.add('error')
+            inputCred.classList.remove('success')
+        }
+        function setSuccess(element) {
+            const inputCred = element.parentElement;
+            const errorElement = inputCred.querySelector('.error');
+
+            errorElement.innerText = '';
+            inputCred.classList.add('success')
+            inputCred.classList.remove('error')
+        }
+
+        const validateEmail = (email) => {
+            return String(email)
+                .toLowerCase()
+                .match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+        };
+
+    </script>
+</body>
+
+</html>
